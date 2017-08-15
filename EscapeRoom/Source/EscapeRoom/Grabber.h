@@ -22,19 +22,30 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	// assign input actions to grabber
 	void SetupInputComponent();
 
+	// look for and assign physics handle
 	void FindPhysicsHandleComponent();
 
+	// attempt to grab physics body object within reach, attach to physics handle
 	void Grab();
 
+	// release component attached to physics handle
 	void Release();
 
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	// return hit for first physics body in reach
 	const FHitResult GetFirstPhysicsBodyInReach();
+
+	// get line trace end of reach
+	FVector GetReachLineEnd();
+
+	// get line trace start of grabber
+	FVector GetReachLineStart();
 
 		
 private:
